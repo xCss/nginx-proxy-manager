@@ -32,6 +32,9 @@ EXPOSE 80
 EXPOSE 81
 EXPOSE 443
 
+WORKDIR /frontend
+RUN yarn install && npm run build
+
 COPY docker/rootfs      /
 ADD backend             /app
 ADD frontend/dist       /app/frontend
