@@ -25,23 +25,23 @@ ENV NPM_BUILD_VERSION="${BUILD_VERSION}" NPM_BUILD_COMMIT="${BUILD_COMMIT}" NPM_
 
 # s6 overlay
 COPY scripts/install-s6 /tmp/install-s6
-RUN chmod +x /tmp/install-s6
-RUN /tmp/install-s6 "${TARGETPLATFORM}" && rm -f /tmp/install-s6
+RUN sh /tmp/install-s6 "${TARGETPLATFORM}" && rm -f /tmp/install-s6
 
 EXPOSE 80
 EXPOSE 81
 EXPOSE 443
 
 RUN node -v
-WORKDIR /frontend
+ADD frontend /tmp/frontend
+RUN cd /tmp/frontend
 RUN ls -al
 RUN yarn
 RUN yarn build
 
-COPY docker/rootfs      /
-ADD backend             /app
-ADD frontend/dist       /app/frontend
-COPY global							/app/global
+COPY docker/rootfs      		/
+ADD backend             		/app
+ADD /tmp/frontend/dist       	/app/frontend
+COPY global						/app/global
 
 WORKDIR /app
 RUN yarn install
