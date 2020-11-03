@@ -31,9 +31,9 @@ jobs:
         run: |
           cd ./frontend/
           npm run build
-      - name: Build the Docker image
-        run: docker build . --file ./docker/Dockerfile 
-      - name: Push to docker hub
+      # - name: Build the Docker image
+      #   run: docker build . --file ./docker/Dockerfile 
+      - name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with: 
           username: ${{ secrets.DOCKER_USERNAME }}
