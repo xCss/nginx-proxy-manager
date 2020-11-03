@@ -5,30 +5,33 @@ const Visualizer           = require('webpack-visualizer-plugin');
 const CopyWebpackPlugin    = require('copy-webpack-plugin');
 const HtmlWebpackPlugin    = require('html-webpack-plugin');
 const PACKAGE              = require('./package.json');
-
+const resolve = function(dir){
+	return path.resolve(__dirname, dir)
+}
 module.exports = {
 	entry:     {
 		main:  './js/index.js',
 		login: './js/login.js'
 	},
 	output:    {
-		path:          path.resolve(__dirname, 'dist'),
+		path:          resolve('dist'),
 		filename:      'js/[name].bundle.js',
 		chunkFilename: 'js/[name].bundle.[id].js',
 		publicPath:    '/'
 	},
 	resolve:   {
+		modules: ['node_modules'],
 		alias: {
-			'tabler-core':      'tabler-ui/dist/assets/js/core',
-			'bootstrap':        'tabler-ui/dist/assets/js/vendors/bootstrap.bundle.min',
-			'sparkline':        'tabler-ui/dist/assets/js/vendors/jquery.sparkline.min',
-			'selectize':        'tabler-ui/dist/assets/js/vendors/selectize.min',
-			'tablesorter':      'tabler-ui/dist/assets/js/vendors/jquery.tablesorter.min',
-			'vector-map':       'tabler-ui/dist/assets/js/vendors/jquery-jvectormap-2.0.3.min',
-			'vector-map-de':    'tabler-ui/dist/assets/js/vendors/jquery-jvectormap-de-merc',
-			'vector-map-world': 'tabler-ui/dist/assets/js/vendors/jquery-jvectormap-world-mill',
-			'circle-progress':  'tabler-ui/dist/assets/js/vendors/circle-progress.min',
-			'c3':               'tabler-ui/dist/assets/js/vendors/chart.bundle.min'
+			'tabler-core':      resolve('tabler-ui/assets/js/core'),
+			'bootstrap':        resolve('tabler-ui/assets/js/vendors/bootstrap.bundle.min'),
+			'sparkline':        resolve('tabler-ui/assets/js/vendors/jquery.sparkline.min'),
+			'selectize':        resolve('tabler-ui/assets/js/vendors/selectize.min'),
+			'tablesorter':      resolve('tabler-ui/assets/js/vendors/jquery.tablesorter.min'),
+			'vector-map':       resolve('tabler-ui/assets/js/vendors/jquery-jvectormap-2.0.3.min'),
+			'vector-map-de':    resolve('tabler-ui/assets/js/vendors/jquery-jvectormap-de-merc'),
+			'vector-map-world': resolve('tabler-ui/assets/js/vendors/jquery-jvectormap-world-mill'),
+			'circle-progress':  resolve('tabler-ui/assets/js/vendors/circle-progress.min'),
+			'c3':               resolve('tabler-ui/assets/js/vendors/chart.bundle.min')
 		}
 	},
 	module:    {

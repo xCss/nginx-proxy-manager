@@ -107,6 +107,6 @@ require('tabler-core');
 
 const App = require('./app/main');
 
-$(document).ready(() => {
+$(function(){
     App.start();
-});
+})

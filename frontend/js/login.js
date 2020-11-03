@@ -1,5 +1,5 @@
 const App = require('./login/main');
 
-$(document).ready(() => {
+$(function(){
     App.start();
-});
+})
