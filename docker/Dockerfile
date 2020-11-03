@@ -32,8 +32,7 @@ EXPOSE 80
 EXPOSE 81
 EXPOSE 443
 
-WORKDIR /frontend
-RUN yarn install 
+RUN node -v
 RUN yarn build
 
 COPY docker/rootfs      /
