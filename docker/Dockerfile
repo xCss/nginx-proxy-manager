@@ -34,6 +34,7 @@ EXPOSE 443
 
 RUN node -v
 WORKDIR /frontend
+RUN ll
 RUN yarn
 RUN yarn build
 
