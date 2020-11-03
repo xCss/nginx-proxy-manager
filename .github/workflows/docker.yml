@@ -47,5 +47,6 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           context: .
           file: ./docker/Dockerfile
-          repository: zozk/nginx-proxy-mamager
+          tags: zozk/nginx-proxy-mamager:latest
+          # repository: zozk/nginx-proxy-mamager
           tag_with_ref: true
