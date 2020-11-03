@@ -31,17 +31,10 @@ EXPOSE 80
 EXPOSE 81
 EXPOSE 443
 
-RUN node -v
-ADD frontend /tmp/frontend
-RUN cd /tmp/frontend && \
-	ls -al
-RUN yarn && \
-    yarn build
-
-COPY docker/rootfs      		/
-ADD backend             		/app
-COPY /tmp/frontend/dist       	/app/frontend
-COPY global						/app/global
+COPY docker/rootfs      /
+ADD backend             /app
+ADD frontend/dist       /app/frontend
+COPY global							/app/global
 
 WORKDIR /app
 RUN yarn install
