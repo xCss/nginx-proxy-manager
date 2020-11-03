@@ -29,7 +29,7 @@ jobs:
         cd ./frontend/
         npm install # 安装 node modules 相关依赖
     - name: npm build
-      run:  |
+      run: |
         cd ./frontend/
         npm run build
     - name: Build the Docker image
