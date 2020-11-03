@@ -25,7 +25,7 @@ ENV NPM_BUILD_VERSION="${BUILD_VERSION}" NPM_BUILD_COMMIT="${BUILD_COMMIT}" NPM_
 
 # s6 overlay
 COPY scripts/install-s6 /tmp/install-s6
-RUN su /tmp/install-s6 "${TARGETPLATFORM}" && su rm -f /tmp/install-s6
+RUN sudo /tmp/install-s6 "${TARGETPLATFORM}" && sudo rm -f /tmp/install-s6
 
 EXPOSE 80
 EXPOSE 81

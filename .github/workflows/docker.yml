@@ -33,7 +33,7 @@ jobs:
           npm run build
       - name: Build the Docker image
         run: docker build . --file ./docker/Dockerfile 
-      - name: Push 
+      - name: Push to docker hub
         uses: docker/build-push-action@v1
         with: 
           username: ${{ secrets.DOCKER_USERNAME }}
