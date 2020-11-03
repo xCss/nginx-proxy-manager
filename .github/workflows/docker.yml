@@ -14,10 +14,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: npm install, build and test
+    - name: npm install
       run: |
         cd ./frontend/
         npm install 
+    - name: npm build
+      run:  |
+        cd ./frontend/
         npm run build
     - name: Build the Docker image
       run: docker build . --file ./docker/Dockerfile 
