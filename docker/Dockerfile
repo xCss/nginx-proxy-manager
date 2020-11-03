@@ -33,10 +33,10 @@ EXPOSE 443
 
 RUN node -v
 ADD frontend /tmp/frontend
-RUN cd /tmp/frontend
-RUN ls -al
-RUN yarn
-RUN yarn build
+RUN cd /tmp/frontend && \
+	ls -al
+RUN yarn && \
+    yarn build
 
 COPY docker/rootfs      		/
 ADD backend             		/app
