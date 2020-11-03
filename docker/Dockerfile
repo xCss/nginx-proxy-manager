@@ -34,7 +34,7 @@ EXPOSE 443
 
 WORKDIR /frontend
 RUN yarn install 
-RUN npm run build
+RUN yarn build
 
 COPY docker/rootfs      /
 ADD backend             /app
