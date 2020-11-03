@@ -40,7 +40,7 @@ RUN yarn && \
 
 COPY docker/rootfs      		/
 ADD backend             		/app
-ADD /tmp/frontend/dist       	/app/frontend
+COPY /tmp/frontend/dist       	/app/frontend
 COPY global						/app/global
 
 WORKDIR /app
