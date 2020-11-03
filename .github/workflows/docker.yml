@@ -13,31 +13,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    # Caching dependencies to speed up workflows. (GitHub will remove any cache entries that have not been accessed in over 7 days.) 缓存压缩 node_modules，不用每次下载，使用时解压，可以加快工作流的执行过程，超过 7 天没有使用将删除压缩包。
-    - name: Cache node modules # step2
-    uses: actions/cache@v1
-    id: cache
-    with:
-        path: node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-        ${{ runner.os }}-node-
-    - name: Install Dependencies # step3 name
-      if: steps.cache.outputs.cache-hit != 'true' # 如果变量 cache-hit 不等于 true
-      run: |
-        cd ./frontend/
-        npm install # 安装 node modules 相关依赖
-    - name: npm build
-      run: |
-        cd ./frontend/
-        npm run build
-    - name: Build the Docker image
-      run: docker build . --file ./docker/Dockerfile 
-    - name: Push 
-      uses: docker/build-push-action@v1
-      with: 
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        repository: zozk/nginx-proxy-mamager
-        tag_with_ref: true
+      - uses: actions/checkout@v2
+      # Caching dependencies to speed up workflows. (GitHub will remove any cache entries that have not been accessed in over 7 days.) 缓存压缩 node_modules，不用每次下载，使用时解压，可以加快工作流的执行过程，超过 7 天没有使用将删除压缩包。
+      - name: Cache node modules # step2
+        uses: actions/cache@v1
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+      - name: Install Dependencies # step3 name
+        if: steps.cache.outputs.cache-hit != 'true' # 如果变量 cache-hit 不等于 true
+        run: |
+          cd ./frontend/
+          npm install # 安装 node modules 相关依赖
+      - name: npm build
+        run: |
+          cd ./frontend/
+          npm run build
+      - name: Build the Docker image
+        run: docker build . --file ./docker/Dockerfile 
+      - name: Push 
+        uses: docker/build-push-action@v1
+        with: 
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: zozk/nginx-proxy-mamager
+          tag_with_ref: true
