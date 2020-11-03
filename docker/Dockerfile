@@ -33,7 +33,10 @@ EXPOSE 81
 EXPOSE 443
 
 RUN node -v
+RUN cd ./frontend
+RUN yarn
 RUN yarn build
+RUN cd ..
 
 COPY docker/rootfs      /
 ADD backend             /app
