@@ -130,7 +130,7 @@ module.exports = {
 			from:    'app-images',
 			to:      'images',
 			toType:  'dir',
-			context: '/app/frontend'
+			// context: './app/frontend'
 		}])
 	]
 };
