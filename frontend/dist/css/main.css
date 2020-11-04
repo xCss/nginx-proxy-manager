@@ -17442,7 +17442,7 @@ a.tag-addon:hover {
 }
 
 .flag-ca {
-  background-image: url(/assets/tabler-ui/d72057feba4dd447b46932c302d90117.svg);
+  background-image: url(/assets/tabler-ui/66da2aef91856851c8465bc5db915588.svg);
 }
 
 .flag-cc {
@@ -18246,7 +18246,7 @@ a.tag-addon:hover {
 }
 
 .flag-us {
-  background-image: url(/assets/tabler-ui/0fffdc4abb38bf1ad94ba5e1295d53c7.svg);
+  background-image: url(/assets/tabler-ui/04128e001bb1981d24d65e4a748b853e.svg);
 }
 
 .flag-uy {
@@ -19277,7 +19277,7 @@ svg {
   font-family: "feather";
   src: url(/assets/tabler-ui/708f3d4239b21b059993eb24bd89c29e.eot);
   /* IE9*/
-  src: url(/assets/tabler-ui/708f3d4239b21b059993eb24bd89c29e.eot#iefix) format("embedded-opentype"), url(/assets/tabler-ui/63646eb9c7fb162ba07dcc3331eb4321.woff) format("woff"), url(/assets/tabler-ui/2a86b695698c807fb6c0512c0b7243f8.ttf) format("truetype"), url(/assets/tabler-ui/b5fc8ffccfd4b22c373f03d602053f4f.svg#feather) format("svg");
+  src: url(/assets/tabler-ui/708f3d4239b21b059993eb24bd89c29e.eot#iefix) format("embedded-opentype"), url(/assets/tabler-ui/63646eb9c7fb162ba07dcc3331eb4321.woff) format("woff"), url(/assets/tabler-ui/2a86b695698c807fb6c0512c0b7243f8.ttf) format("truetype"), url(/assets/tabler-ui/00d74c38fdadd28316fec376d236022c.svg#feather) format("svg");
   /* iOS 4.1- */
 }
 
