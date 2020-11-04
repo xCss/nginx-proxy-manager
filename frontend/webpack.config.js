@@ -23,6 +23,7 @@ module.exports = {
 		modules: ['node_modules'],
 		alias: {
 			'tabler-core':      resolve('tabler-ui/assets/js/core'),
+			'jquery': 			resolve('tabler-ui/assets/js/vendors/jquery-3.2.1.min'),
 			'bootstrap':        resolve('tabler-ui/assets/js/vendors/bootstrap.bundle.min'),
 			'sparkline':        resolve('tabler-ui/assets/js/vendors/jquery.sparkline.min'),
 			'selectize':        resolve('tabler-ui/assets/js/vendors/selectize.min'),
