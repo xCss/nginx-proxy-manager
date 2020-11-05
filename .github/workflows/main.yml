@@ -17,5 +17,5 @@ jobs:
         cat .version
         echo "::set-output name=v::$(cat .version)"
     - name: Display version 
-      run: echo ${{needs.vars.outputs.v}}
+      run: echo ${{steps.vars.outputs.v}}
       shell: bash
