@@ -20,8 +20,8 @@ export default {
     onMounted(()=>{
       
       ctx.login({
-        identity:'xioveliu@gmail.com',
-        secret:'99U9VqoHm4foBc'
+        identity:'',
+        secret:''
       });
     })
   }
