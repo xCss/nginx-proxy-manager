@@ -1,5 +1,7 @@
 import {get,post} from './axios'
-import {login} from './apiMap'
+import {LOGIN} from './apiMap'
 export default {
-    login(){}
+    login(data){
+        return post(LOGIN,data)
+    }
 }

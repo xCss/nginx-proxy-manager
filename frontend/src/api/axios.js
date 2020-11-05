@@ -1,8 +1,12 @@
-import axios from "axios";
+import axios from "axios"
+import qs from 'qs'
 
+const service = axios.create({
+  timeout: 60000 // request timeout
+})
 
 //POST传参序列化
-axios.interceptors.request.use((config) => {
+service.interceptors.request.use((config) => {
   // if (config.method === 'post') {
   //     config.data = qs.stringify(config.data);
   // }
@@ -11,7 +15,7 @@ axios.interceptors.request.use((config) => {
 
 
 //返回状态判断
-axios.interceptors.response.use((res) => {
+service.interceptors.response.use((res) => {
   return res;
 }, err => Promise.reject(err))
 
@@ -21,8 +25,9 @@ export function get(url, params) {
   // loading.show({
   //     text: '正在加载...'
   // })
+  url+='?'+qs.stringify(params)
   return new Promise((resolve, reject) => {
-      axios.get(url, params)
+      service.get(url)
           .then(response => {
               // loading.hide()
               resolve(response.data);
@@ -42,7 +47,7 @@ export function post(url, params) {
   //     text: '正在加载...'
   // })
   return new Promise((resolve, reject) => {
-      axios.get(url, params)
+      service.post(url, params)
           .then(response => {
               // loading.hide()
               resolve(response.data);

@@ -15,10 +15,14 @@ export default {
   components: {
     HelloWorld
   },
-  setup(ctx){
+  setup(){
+    let {ctx} = getCurrentInstance()
     onMounted(()=>{
-      let vm = this
-      console.log(getCurrentInstance())
+      
+      ctx.login({
+        identity:'xioveliu@gmail.com',
+        secret:'99U9VqoHm4foBc'
+      });
     })
   }
 }
