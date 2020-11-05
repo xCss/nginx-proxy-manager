@@ -25,15 +25,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
       - name: Cache node modules
+        id: cache-node-modules
         uses: actions/cache@v2
         env:
           cache-name: cache-node-modules
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-yarn-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-yarn-${{ env.cache-name }}-
       - name: Install Dependencies # step3 name
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: |
           cd ./frontend/
           yarn 
