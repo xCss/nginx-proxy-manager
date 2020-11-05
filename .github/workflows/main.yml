@@ -13,9 +13,8 @@ jobs:
     - name: Get Version from version file
       id: vars
       run: |
-        ls -al
-        cat .version
         echo "::set-output name=v::$(cat .version)"
+      shell: bash
     - name: Display version 
       run: echo ${{steps.vars.outputs.v}}
       shell: bash
