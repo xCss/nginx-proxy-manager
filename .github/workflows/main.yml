@@ -16,7 +16,6 @@ jobs:
         ls -al
         cat .version
         echo "::set-output name=v::$(/bin/cat .version)"
-      shell: bash
     - name: Display version 
       run: echo ${{needs.vars.outputs.v}}
       shell: bash
