@@ -2,22 +2,15 @@ import axios from "axios"
 import qs from 'qs'
 
 const service = axios.create({
-  timeout: 60000 // request timeout
+  timeout: 60000, 
+  paramsSerializer: params => qs.stringify(params, {
+    arrayFormat: 'repeat'
+  }),
 })
 
-//POST传参序列化
-service.interceptors.request.use((config) => {
-  // if (config.method === 'post') {
-  //     config.data = qs.stringify(config.data);
-  // }
-  return config;
-}, err => Promise.reject(err))
+service.interceptors.request.use(config => config, err => Promise.reject(err))
 
-
-//返回状态判断
-service.interceptors.response.use((res) => {
-  return res;
-}, err => Promise.reject(err))
+service.interceptors.response.use(res => Promise.resolve(res.data), err => Promise.reject(err))
 
 
 export function get(url, params) {
