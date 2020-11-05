@@ -10,8 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - id: vars
+    - name: Get Version from version file
+      id: vars
       run: echo "::set-output name=v::$(/bin/cat .version)"
       shell: bash
-    - run: echo ${{needs.vars.outputs.v}}
+    - name: Display version 
+      run: echo ${{needs.vars.outputs.v}}
       shell: bash
