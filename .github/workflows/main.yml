@@ -11,5 +11,5 @@ jobs:
     name: A job to say hello
     steps:
     - uses: actions/checkout@v2
-    - run: echo version ${{ steps.outputs.version }} 
+    - run: echo version ${{ steps.foo.outputs.version }} 
       shell: bash
