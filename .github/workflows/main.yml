@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - id: step1
-      run: echo "::set-output name=version::$(cat ./version)"
+      run: echo "::set-output name=version::$(cat ./.version)"
       shell: bash
   build_docker:
     runs-on: ubuntu-latest
