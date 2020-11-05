@@ -11,5 +11,16 @@ jobs:
     name: A job to say hello
     steps:
     - uses: actions/checkout@v2
-    - run: echo random-number ${{ steps.foo.outputs.random-number }} 
+    - run: echo version ${{ steps.outputs.version }} 
+      shell: bash
+
+outputs:
+  version: 
+    description: "Random number"
+    value: ${{ steps.get-version.outputs.version }}
+runs:
+  using: "composite"
+  steps: 
+    - id: get-version
+      run: echo "::set-output name=version::$(cat ./version)"
       shell: bash
