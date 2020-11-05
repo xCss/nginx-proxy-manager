@@ -1,14 +1,12 @@
 name: 'Hello World'
 description: 'Greet someone'
 outputs:
-  random-number: 
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-id }}
-runs:
-  using: "composite"
-  steps: 
-    - run: echo Hello .
-      shell: bash
-    - id: random-number-generator
-      run: echo "::set-output name=random-id::$(echo $RANDOM)"
-      shell: bash
+    version: 
+      description: "Get version"
+      value: ${{ steps.get-version.outputs.version }}
+  runs:
+    using: "composite"
+    steps: 
+      - id: get-version
+        run: echo "::set-output name=version::$(cat ./version)"
+        shell: bash

@@ -13,14 +13,3 @@ jobs:
     - uses: actions/checkout@v2
     - run: echo version ${{ steps.outputs.version }} 
       shell: bash
-
-outputs:
-  version: 
-    description: "Random number"
-    value: ${{ steps.get-version.outputs.version }}
-runs:
-  using: "composite"
-  steps: 
-    - id: get-version
-      run: echo "::set-output name=version::$(cat ./version)"
-      shell: bash
