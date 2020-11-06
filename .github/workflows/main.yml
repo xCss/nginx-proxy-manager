@@ -55,12 +55,4 @@ jobs:
           echo 'Checking Syntax ...'
           docker run --rm -v "$(pwd)/backend:/app" -v "$(pwd)/global:/app/global" -w /app node:latest sh -c "yarn install && yarn eslint . && rm -rf node_modules"
           echo 'Docker Build ...'
-          docker build --pull --no-cache --squash --compress \\
-            -t "$IMAGE:ci-$BUILD_NUMBER" \\
-            -f docker/Dockerfile \\
-            --build-arg TARGETPLATFORM=linux/amd64 \\
-            --build-arg BUILDPLATFORM=linux/amd64 \\
-            --build-arg BUILD_VERSION="${{steps.vers.outputs.v}}" \\
-            --build-arg BUILD_DATE="$(date '+%Y-%m-%d %T %Z')" \\
-            .
-        shell: bash
+          docker build --pull --no-cache --squash --compress -t "$IMAGE:ci-$BUILD_NUMBER" -f docker/Dockerfile --build-arg TARGETPLATFORM=linux/amd64 --build-arg BUILDPLATFORM=linux/amd64 --build-arg BUILD_VERSION="${{steps.vers.outputs.v}}" --build-arg BUILD_DATE="$(date '+%Y-%m-%d %T %Z')" .
