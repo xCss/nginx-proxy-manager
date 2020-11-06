@@ -36,8 +36,8 @@ jobs:
         run: echo "::set-output name=v::$(cat .version)"
       - name: Install Utils
         run: |
-          apt-get install epel-release -y
-          apt-get moreutils moreutils -y
+          sudo apt-get install epel-release -y
+          sudo apt-get moreutils moreutils -y
 
       # 设置version
       - name: Set Versions from package.json
