@@ -34,9 +34,9 @@ jobs:
       - name: Get Version
         id: vers
         run: echo "::set-output name=v::$(cat .version)"
-      - name: Install Utils
-        run: |
-          sudo apt-get install moreutils -y
+      # - name: Install Utils
+      #   run: |
+      #     sudo apt-get install moreutils -y
 
       # 设置version
       - name: Set Versions 
