@@ -7,7 +7,7 @@ on:
 
 jobs:
   build_docker:
-    runs-on: centos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       # 设置buildx
@@ -36,8 +36,8 @@ jobs:
         run: echo "::set-output name=v::$(cat .version)"
       - name: Install Utils
         run: |
-          yum install epel-release -y
-          yum moreutils moreutils -y
+          apt-get install epel-release -y
+          apt-get moreutils moreutils -y
 
       # 设置version
       - name: Set Versions from package.json
