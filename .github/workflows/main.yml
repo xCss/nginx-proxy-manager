@@ -53,7 +53,11 @@ jobs:
       - name: Build Backend
         run: |
           echo 'Checking Syntax ...'
-          docker run --rm -v "$(pwd)/backend:/app" -v "$(pwd)/global:/app/global" -w /app node:latest sh -c "yarn install && yarn eslint . && rm -rf node_modules"
+          docker run --rm -v \
+            "$(pwd)/backend:/app" \
+            -v "$(pwd)/global:/app/global" \
+            -w /app node:latest \
+            sh -c "yarn install && yarn eslint . && rm -rf node_modules"
           echo 'Docker Build ...'
           docker build --pull --no-cache --compress \
             -t "$IMAGE:ci-$BUILD_NUMBER" \
