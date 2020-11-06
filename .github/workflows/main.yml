@@ -67,12 +67,12 @@ jobs:
             --build-arg BUILD_VERSION="${{steps.vers.outputs.v}}" \
             --build-arg BUILD_DATE="$(date '+%Y-%m-%d %T %Z')" \
             .
-      - name: Integration Tests Sqlite
-        run: |
-          # Bring up a stack
-          docker-compose up -d fullstack-sqlite && ./scripts/wait-healthy $(docker-compose ps -q fullstack-sqlite) 120
-          # Run tests
-          rm -rf test/results && docker-compose up cypress-sqlite
-          # Get results
-          docker cp -L "$(docker-compose ps -q cypress-sqlite):/test/results" test/
+      # - name: Integration Tests Sqlite
+      #   run: |
+      #     # Bring up a stack
+      #     docker-compose up -d fullstack-sqlite && ./scripts/wait-healthy $(docker-compose ps -q fullstack-sqlite) 120
+      #     # Run tests
+      #     rm -rf test/results && docker-compose up cypress-sqlite
+      #     # Get results
+      #     docker cp -L "$(docker-compose ps -q cypress-sqlite):/test/results" test/
       
